@@ -12,7 +12,7 @@ import javax.naming.NamingException;
 /**
  * Roteamento baseado no conteúdo (propriedade formato com valor ebook)
  * 
- * Execute as classes RegistraFinanceiroNoTopico, RegistraGeradorNoTopico e EnviaMensagemParOTopico
+ * - Execute as classes RegistraFinanceiroNoTopico, RegistraGeradorNoTopico e EnviaMensagemParOTopico
  * 
  * 
  * @author tca85
@@ -31,6 +31,7 @@ public class RegistraGeradorNoTopico {
 			context.setClientID("GeradorEbook");
 			
 			// dessa forma vai receber somente as mensagens que tiverem a propriedade formato, com valor ebook
+			// o formato da propriedade pode ter qualquer regra em formato SQL (and, or...)
 			JMSConsumer consumer = context.createDurableConsumer(topico, "AssinaturaEbook", "formato='ebook'", false);
 			
 			consumer.setMessageListener(new TratadorDeMensagem());
