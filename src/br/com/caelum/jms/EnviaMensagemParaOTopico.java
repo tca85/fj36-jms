@@ -39,9 +39,9 @@ public class EnviaMensagemParaOTopico {
 			Scanner scanner = new Scanner(System.in);
 			
 			while (scanner.hasNext()) {
-				String line = scanner.nextLine();
+				String msg = scanner.nextLine();
 				
-				producer.send(topico, line);
+				producer.send(topico, "[Thiago Alves]: " + msg);
 			}
 			scanner.close();
 		}
